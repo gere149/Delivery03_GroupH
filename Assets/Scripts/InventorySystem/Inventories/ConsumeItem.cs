@@ -6,9 +6,9 @@ public class ConsumeItem : MonoBehaviour, IConsume
 {
     public void Use(ConsumableItem item)
     {
-        if (item is ItemPotion)
+        if (item is ItemIngestible)
         {
-            Debug.Log("Health potion consumed!");
+            Debug.Log("Health potion consumed!"); //PONER OBSERVER
         }
     }
 }
