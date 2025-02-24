@@ -1,0 +1,54 @@
+{
+    "name": "Title",
+    "maps": [
+        {
+            "name": "Title",
+            "id": "3ebfd4d9-f821-4f2e-ae77-23d565417cf6",
+            "actions": [
+                {
+                    "name": "Enter",
+                    "type": "Button",
+                    "id": "161c87b4-de81-44f5-ad6b-077f0394bdc3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "66ff935f-2b94-476f-9540-cd3b47ce7caf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "92fe0077-ba66-44a6-9514-bd1c259f5289",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "319a5825-26e4-49ed-aceb-84c5c0b37d71",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
