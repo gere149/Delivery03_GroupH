@@ -3,41 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //private AudioSource audioSource;
-
-    //private System.Collections.IEnumerator WaitForSoundAndChangeScene()
-    //{
-    //    yield return new WaitForSeconds(audioSource.clip.length);
-    //    SceneManager.LoadScene("Gameplay");
-    //}
-
-    //private void Awake()
-    //{
-    //    audioSource = GetComponent<AudioSource>();
-    //}
-
     private void OnEnable()
     {
-        //ACTIVAR CUANDO NO TENGAMOS VIDA
+        PlayerInfo.OnDie += LoseEndScene;
     }
 
     private void OnDisable()
     {
-        //ACTIVAR CUANDO NO TENGAMOS VIDA
+        PlayerInfo.OnDie -= LoseEndScene;
     }
 
     public void Play()
     {
-        //if (audioSource != null)
-        //{
-        //    audioSource.Play();
-        //    StartCoroutine(WaitForSoundAndChangeScene());
-        //}
-        //else
-        //{
-        //    SceneManager.LoadScene("Gameplay");
-        //}
-
         SceneManager.LoadScene("Gameplay");
     }
 
