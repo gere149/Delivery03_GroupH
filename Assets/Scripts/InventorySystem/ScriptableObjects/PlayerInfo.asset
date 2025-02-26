@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PlayerInfo
   m_EditorClassIdentifier: 
   Money: 100
-  Health: 100
+  initialMoney: 100
+  Health: 0
   damage: 20

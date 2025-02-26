@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 62576001}
   - component: {fileID: 62576002}
   - component: {fileID: 62576003}
+  - component: {fileID: 62576004}
   m_Layer: 5
   m_Name: InventoryShop
   m_TagString: Shop
@@ -301,13 +302,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62575995}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2127330161}
-  m_Father: {fileID: 1546767115}
+  m_Father: {fileID: 1396346617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -356,6 +357,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementInfo: {fileID: 11400000, guid: f322a5e770a7d764d935bd344c1a3a4f, type: 2}
   textMoney: {fileID: 2127330163}
+--- !u!114 &62576004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62575995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db17554c5c0c8943883b4509e6995fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementInfo: {fileID: 11400000, guid: f322a5e770a7d764d935bd344c1a3a4f, type: 2}
 --- !u!1 &273371264
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 11400000, guid: 771af9f89fac8d74e985c86f39e07f97, type: 2}
+  shopInfo: {fileID: 11400000, guid: f322a5e770a7d764d935bd344c1a3a4f, type: 2}
 --- !u!4 &273371266
 Transform:
   m_ObjectHideFlags: 0
@@ -797,8 +812,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1546767116}
-        m_TargetAssemblyTypeName: ItemTrade, Assembly-CSharp
+      - m_Target: {fileID: 6834148325869495111, guid: 6043e18037cac4648be79a2ea5ca83c4,
+          type: 3}
+        m_TargetAssemblyTypeName: InventorySlotUI, Assembly-CSharp
         m_MethodName: OnBuyItem
         m_Mode: 1
         m_Arguments:
@@ -1243,8 +1259,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1546767116}
-        m_TargetAssemblyTypeName: ItemTrade, Assembly-CSharp
+      - m_Target: {fileID: 6834148325869495111, guid: 6043e18037cac4648be79a2ea5ca83c4,
+          type: 3}
+        m_TargetAssemblyTypeName: InventorySlotUI, Assembly-CSharp
         m_MethodName: OnSellItem
         m_Mode: 1
         m_Arguments:
@@ -1535,6 +1552,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 744948751}
+  - {fileID: 62576000}
   m_Father: {fileID: 1546767115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1922,7 +1940,6 @@ GameObject:
   - component: {fileID: 1546767114}
   - component: {fileID: 1546767113}
   - component: {fileID: 1546767112}
-  - component: {fileID: 1546767116}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2006,7 +2023,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1396346617}
-  - {fileID: 62576000}
   - {fileID: 827637567}
   - {fileID: 1182170544}
   - {fileID: 1778100641}
@@ -2017,18 +2033,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1546767116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1546767111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50fcafe4f10e53a459eceead6a50c9f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1699647440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,6 +2412,7 @@ GameObject:
   - component: {fileID: 1971635134}
   - component: {fileID: 1971635133}
   - component: {fileID: 1971635135}
+  - component: {fileID: 1971635136}
   m_Layer: 5
   m_Name: InventoryPlayer
   m_TagString: Player
@@ -2551,6 +2556,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementInfo: {fileID: 11400000, guid: 771af9f89fac8d74e985c86f39e07f97, type: 2}
   textMoney: {fileID: 1537411341}
+--- !u!114 &1971635136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971635126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db17554c5c0c8943883b4509e6995fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementInfo: {fileID: 11400000, guid: 771af9f89fac8d74e985c86f39e07f97, type: 2}
 --- !u!1 &2127330160
 GameObject:
   m_ObjectHideFlags: 0

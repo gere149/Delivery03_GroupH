@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,6 +19,10 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private static InventorySlotUI selectedSlot;
     private Color defaultColor;
     private Color selectedColor = new Color(1f, 1f, 0.5f, 1f);
+
+    public static Action<ItemBase> OnBuyingItem;
+    public static Action<ItemBase> OnSellingItem;
+    public static Action<ItemBase, InventoryUI> OnSellingItemWhenDrag;
 
     public void Initialize(ItemSlot slot, InventoryUI inventory)
     {
@@ -67,6 +72,8 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 var pickUpComponent = otherObject.GetComponent<IPickUp>();
                 if (pickUpComponent != null)
                 {
+                    OnSellingItemWhenDrag?.Invoke(selectedSlot._item, _inventory);
+
                     pickUpComponent.PickUp(_item);
                     _inventory.Inventory.RemoveItem(_item);
                 }
@@ -76,6 +83,41 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         transform.SetParent(_parent.transform);
         transform.localPosition = Vector3.zero;
     }
+
+    public void OnBuyItem()
+    {
+        GameObject shopObject = GameObject.FindGameObjectWithTag("Player");
+        if (shopObject != null && shopObject.tag != this.gameObject.tag)
+        {
+            IPickUp pickUpComponent = shopObject.GetComponent<IPickUp>();
+
+            if (pickUpComponent != null && selectedSlot != null)
+            {
+                OnBuyingItem?.Invoke(selectedSlot._item);
+
+                pickUpComponent.PickUp(selectedSlot._item);
+                selectedSlot._inventory.Inventory.RemoveItem(selectedSlot._item);
+            }
+        }
+    }
+
+    public void OnSellItem()
+    {
+        GameObject shopObject = GameObject.FindGameObjectWithTag("Shop");
+        if (shopObject != null && shopObject.tag != this.gameObject.tag)
+        {
+            IPickUp pickUpComponent = shopObject.GetComponent<IPickUp>();
+
+            if (pickUpComponent != null && selectedSlot != null)
+            {
+                OnSellingItem?.Invoke(selectedSlot._item);
+
+                pickUpComponent.PickUp(selectedSlot._item);
+                selectedSlot._inventory.Inventory.RemoveItem(selectedSlot._item);
+            }
+        }
+    }
+
 
     public void OnPointerClick(PointerEventData eventData)
     {

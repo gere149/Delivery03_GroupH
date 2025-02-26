@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e51c14542255424d97a666a8d043742, type: 3}
   m_Name: ShopInfo
   m_EditorClassIdentifier: 
-  Money: 200
+  Money: 835
+  initialMoney: 200

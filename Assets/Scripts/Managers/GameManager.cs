@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public PlayerInfo playerInfo;
+    public ElementInfo shopInfo;
 
     private void OnEnable()
     {
@@ -17,7 +18,10 @@ public class GameManager : MonoBehaviour
 
     public void Play()
     {
-        playerInfo.ResetValues();
+        playerInfo.ResetHealth();
+        playerInfo.ResetMoney();
+
+        shopInfo.ResetMoney();
         SceneManager.LoadScene("Gameplay");
     }
 

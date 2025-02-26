@@ -593,6 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 11400000, guid: 771af9f89fac8d74e985c86f39e07f97, type: 2}
+  shopInfo: {fileID: 11400000, guid: f322a5e770a7d764d935bd344c1a3a4f, type: 2}
 --- !u!4 &2016929422
 Transform:
   m_ObjectHideFlags: 0
@@ -755,6 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 0}
+  shopInfo: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
