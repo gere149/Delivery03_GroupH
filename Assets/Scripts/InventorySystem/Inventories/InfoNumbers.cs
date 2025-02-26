@@ -1,7 +1,5 @@
 using UnityEngine;
 using TMPro;
-using static UnityEditor.Progress;
-using System.Data.SqlTypes;
 
 public class InfoNumbers : MonoBehaviour
 {

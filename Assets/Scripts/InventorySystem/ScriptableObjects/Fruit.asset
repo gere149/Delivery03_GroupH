@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Fruit
   m_EditorClassIdentifier: 
   Name: Fruitaholic
-  ImageUI: {fileID: -8931187395312960210, guid: 829cf6f9cc636ac4ca639a1278130d55,
-    type: 3}
+  ImageUI: {fileID: 286138163385114242, guid: 22346ce6d7cd3054e97ab524455a7b64, type: 3}
   IsStackable: 1
   Cost: 5
   HealthPoints: 5
