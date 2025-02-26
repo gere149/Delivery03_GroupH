@@ -14,6 +14,7 @@ public class InventorySlotUI : MonoBehaviour,
     public static Action<ItemBase> OnBuyingItem;
     public static Action<ItemBase> OnSellingItem;
     public static Action<ItemBase, InventoryUI> OnSellingItemWhenDrag;
+    public static Action<bool> OnItemSelected;
 
     private Canvas _canvas;
     private Transform _parent;
@@ -37,6 +38,11 @@ public class InventorySlotUI : MonoBehaviour,
         _inventory = inventory;
 
         defaultColor = backgroundImage.color;
+    }
+
+    private void Update()
+    {
+        OnItemSelected?.Invoke(selectedSlot != null);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -134,6 +140,7 @@ public class InventorySlotUI : MonoBehaviour,
     {
         if (selectedSlot != null && selectedSlot._item is ConsumableItem)
         {
+
             var consumer = selectedSlot._inventory.GetComponent<IConsume>();
             if (consumer != null)
             {

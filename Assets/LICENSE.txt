@@ -8,9 +8,32 @@ These are being released as a part of the Openmon project. These sprites are rel
 
 Link: https://screensmith.itch.io/item-icon-sprites-set-1-openmon
 
-Other Sprite Assets - Mushroom Forest 
+
+OTHER SPRITE ASSETS - Mushroom Forest:
+
+Mushroom Forest by Marie Pepo is marked with CC0 1.0.
 
 Link: https://marie-pepo.itch.io/mf-items
+
+
+AUDIO LICENSES:
+
+Jazz Music by Denis Pavlov is marked with CC0 1.0. To view a copy of this license
+
+Link: https://pixabay.com/music/smooth-jazz-podcast-smooth-jazz-instrumental-music-225674/
+
+Ka-ching by u_byub5wd934 is marked with CC0 1.0 Universal
+
+Link: https://pixabay.com/sound-effects/cashier-quotka-chingquot-sound-effect-129698/
+
+Eat by freesound_community is marked with CC0 1.0 Universal
+
+Link: https://pixabay.com/sound-effects/game-eat-sound-83240/
+
+Money Pickup 2 by Freesound_community is marked with CC0 1.0 Universal
+
+Link: https://pixabay.com/sound-effects/money-pickup-2-89563/
+
 
 Creative Commons Legal Code
 

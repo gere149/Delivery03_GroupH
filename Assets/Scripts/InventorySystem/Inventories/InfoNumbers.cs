@@ -12,11 +12,11 @@ public class InfoNumbers : MonoBehaviour
 
         if (elementInfo is PlayerInfo)
         {
-            textMoney.text = $"Player Money: {elementInfo.Money}";
+            textMoney.text = "" + elementInfo.Money;
         }
         else
         {
-            textMoney.text = $"Shop Money: {elementInfo.Money}";
+            textMoney.text = "" + elementInfo.Money;
         }
     }
 
@@ -34,11 +34,11 @@ public class InfoNumbers : MonoBehaviour
     {
         if (elementInfo is PlayerInfo)
         {
-            textMoney.text = $"Player Money: {elementInfo.Money}";
+            textMoney.text = "" + elementInfo.Money;
         }
         else 
         {
-            textMoney.text = $"Shop Money: {elementInfo.Money}";
+            textMoney.text = "" + elementInfo.Money;
         }
     }
 }
