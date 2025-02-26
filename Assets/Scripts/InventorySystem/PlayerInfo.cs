@@ -8,13 +8,17 @@ public class PlayerInfo : ElementInfo
     public float Health;
     public float damage;
 
-    private float maxHealth = 100.0f;
-
     public static Action OnDie;
     public static Action OnHealthChanged;
 
+    private float maxHealth = 100.0f;
+    private float defaultHealth = 100.0f;
+    private float defaultDamage = 20.0f;
+
     private void OnEnable()
     {
+        ResetValues();
+
         ConsumeItem.OnConsumeItem += HealthUp;
         OnHealthChanged?.Invoke();
     }
@@ -22,6 +26,13 @@ public class PlayerInfo : ElementInfo
     private void OnDisable()
     {
         ConsumeItem.OnConsumeItem -= HealthUp;
+        ResetValues();
+    }
+
+    public void ResetValues()
+    {
+        Health = defaultHealth;
+        damage = defaultDamage;
     }
 
     private void HealthUp(ItemIngestible item)

@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public PlayerInfo playerInfo;
+
     private void OnEnable()
     {
         PlayerInfo.OnDie += LoseEndScene;
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public void Play()
     {
+        playerInfo.ResetValues();
         SceneManager.LoadScene("Gameplay");
     }
 

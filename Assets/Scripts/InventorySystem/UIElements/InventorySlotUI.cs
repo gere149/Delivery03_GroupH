@@ -3,20 +3,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
-public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-    // NOTE: Inventory UI slots support drag&drop,
-    // implementing the Unity provided interfaces by events system
-
     public Image Image;
     public TextMeshProUGUI AmountText;
 
     private Canvas _canvas;
-    private GraphicRaycaster _raycaster;
     private Transform _parent;
     private ItemBase _item;
     private InventoryUI _inventory;
+
+    private static InventorySlotUI selectedSlot;
+    private Color defaultColor;
+    private Color selectedColor = new Color(1f, 1f, 0.5f, 1f);
 
     public void Initialize(ItemSlot slot, InventoryUI inventory)
     {
@@ -28,58 +29,78 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         _item = slot.Item;
         _inventory = inventory;
+
+        defaultColor = Image.color;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         _parent = transform.parent;
-
-        // Start moving object from the beginning!
         transform.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0);
-        
-        // We need a few references from UI
+
         if (!_canvas)
         {
             _canvas = GetComponentInParent<Canvas>();
-            _raycaster = _canvas.GetComponent<GraphicRaycaster>();
         }
-        
-        // Change parent of our item to the canvas
+
         transform.SetParent(_canvas.transform, true);
-        
-        // And set it as last child to be rendered on top of UI
         transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        // Moving object around screen using mouse delta
         transform.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // Find scene objects colliding with mouse point on end dragging
-        RaycastHit2D hitData = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
+        List<RaycastResult> results = new List<RaycastResult>();
+        GraphicRaycaster raycaster = GetComponentInParent<Canvas>().GetComponent<GraphicRaycaster>();
+        raycaster.Raycast(eventData, results);
 
-        if (hitData)
+        foreach (RaycastResult result in results)
         {
-            Debug.Log("Drop over object: " + hitData.collider.gameObject.name);
+            GameObject otherObject = result.gameObject;
 
-            var consumer = hitData.collider.GetComponent<IConsume>();
-            bool consumable = _item is ConsumableItem;
-
-            if ((consumer != null) && consumable)
+            if (otherObject != gameObject && otherObject.tag != this.gameObject.tag)
             {
-                (_item as ConsumableItem).Use(consumer);
-                _inventory.UseItem(_item);
+                var pickUpComponent = otherObject.GetComponent<IPickUp>();
+                if (pickUpComponent != null)
+                {
+                    pickUpComponent.PickUp(_item);
+                    _inventory.Inventory.RemoveItem(_item);
+                }
             }
         }
 
-        // Changing parent back to slot
         transform.SetParent(_parent.transform);
-
-        // And centering item position
         transform.localPosition = Vector3.zero;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (selectedSlot != null)
+        {
+            selectedSlot.Image.color = selectedSlot.defaultColor;
+        }
+
+        selectedSlot = this;
+        Image.color = selectedColor;
+    }
+
+    public static void OnConsume()
+    {
+        if (selectedSlot != null && selectedSlot._item is ConsumableItem)
+        {
+            var consumer = selectedSlot._inventory.GetComponent<IConsume>();
+            if (consumer != null)
+            {
+                (selectedSlot._item as ConsumableItem).Use(consumer);
+                selectedSlot._inventory.UseItem(selectedSlot._item);
+
+                selectedSlot.Image.color = selectedSlot.defaultColor;
+                selectedSlot = null;
+            }
+        }
     }
 }

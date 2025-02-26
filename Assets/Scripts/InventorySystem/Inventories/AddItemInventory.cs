@@ -6,9 +6,9 @@ public class AddItemInventory : MonoBehaviour, IPickUp
 {
     public Inventory Inventory;
 
-    public void PickUp(ICanBePicked item)
+    public void PickUp(ItemBase item)
     {
         // Add picked up item to player inventory
-        Inventory.AddItem(item.GetItem());
+        Inventory.AddItem(item);
     }
 }
