@@ -801,7 +801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309591600}
   m_Layer: 5
-  m_Name: Handle Slide Area
+  m_Name: HandleSlideArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1702,6 +1702,7 @@ GameObject:
   - component: {fileID: 1013845784}
   - component: {fileID: 1013845786}
   - component: {fileID: 1013845785}
+  - component: {fileID: 1013845787}
   m_Layer: 5
   m_Name: TextUse
   m_TagString: Untagged
@@ -1748,7 +1749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: USE
+  m_text: Use
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1827,6 +1828,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013845783}
   m_CullTransparentMesh: 0
+--- !u!114 &1013845787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013845783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58ffe70adc0694da28699e32a9eced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextKey: Use
 --- !u!1 &1031980978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,6 +2008,7 @@ GameObject:
   - component: {fileID: 1056100432}
   - component: {fileID: 1056100434}
   - component: {fileID: 1056100433}
+  - component: {fileID: 1056100435}
   m_Layer: 5
   m_Name: TextBuy
   m_TagString: Untagged
@@ -2040,7 +2055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <-- BUY
+  m_text: Buy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2119,6 +2134,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056100431}
   m_CullTransparentMesh: 0
+--- !u!114 &1056100435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056100431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58ffe70adc0694da28699e32a9eced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextKey: Buy
 --- !u!1 &1124132326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,6 +2774,7 @@ GameObject:
   - component: {fileID: 1426316715}
   - component: {fileID: 1426316717}
   - component: {fileID: 1426316716}
+  - component: {fileID: 1426316718}
   m_Layer: 5
   m_Name: TextSell
   m_TagString: Untagged
@@ -2792,7 +2821,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SELL -->
+  m_text: Sell
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2871,6 +2900,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426316714}
   m_CullTransparentMesh: 0
+--- !u!114 &1426316718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426316714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58ffe70adc0694da28699e32a9eced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextKey: Sell
 --- !u!1 &1450669638
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,7 +3135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1537394356}
   m_Layer: 5
-  m_Name: Fill Area
+  m_Name: FillArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3131,8 +3173,9 @@ GameObject:
   - component: {fileID: 1537411342}
   - component: {fileID: 1537411341}
   - component: {fileID: 1537411343}
+  - component: {fileID: 1537411344}
   m_Layer: 5
-  m_Name: PlayerMoney_TMP
+  m_Name: PlayerMoney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3276,6 +3319,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1537411344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537411338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58ffe70adc0694da28699e32a9eced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextKey: Player Money
 --- !u!1 &1546767111
 GameObject:
   m_ObjectHideFlags: 0
@@ -4224,7 +4280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1653a4db787e023499443752c729f5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DataSheet: {fileID: 4900000, guid: 662064044f4308b4caf3467575200192, type: 3}
+  DataSheet: {fileID: 4900000, guid: b24cca466b884fe418cdeef753dbca87, type: 3}
   DefaultLanguage: 1
 --- !u!4 &1928432417
 Transform:
@@ -4769,8 +4825,9 @@ GameObject:
   - component: {fileID: 2127330164}
   - component: {fileID: 2127330163}
   - component: {fileID: 2127330165}
+  - component: {fileID: 2127330166}
   m_Layer: 5
-  m_Name: ShopMoney_TMP
+  m_Name: ShopMoney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4914,6 +4971,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &2127330166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127330160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c58ffe70adc0694da28699e32a9eced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextKey: Shop Money
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
