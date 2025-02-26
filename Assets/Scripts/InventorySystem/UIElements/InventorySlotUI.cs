@@ -4,12 +4,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
-public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+public class InventorySlotUI : MonoBehaviour,
+    IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public Image Image;
+    public Image itemImage, backgroundImage;
     public TextMeshProUGUI AmountText;
+
+    public static Action<ItemBase> OnBuyingItem;
+    public static Action<ItemBase> OnSellingItem;
+    public static Action<ItemBase, InventoryUI> OnSellingItemWhenDrag;
 
     private Canvas _canvas;
     private Transform _parent;
@@ -18,16 +22,13 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private static InventorySlotUI selectedSlot;
     private Color defaultColor;
-    private Color selectedColor = new Color(1f, 1f, 0.5f, 1f);
-
-    public static Action<ItemBase> OnBuyingItem;
-    public static Action<ItemBase> OnSellingItem;
-    public static Action<ItemBase, InventoryUI> OnSellingItemWhenDrag;
+    private Color selectedColor = new Color(1f, 0.65f, 0f, 0.8f);
+    private Color hoverColor = new Color(1f, 1f, 1f, 0.7f);
 
     public void Initialize(ItemSlot slot, InventoryUI inventory)
     {
-        Image.sprite = slot.Item.ImageUI;
-        Image.SetNativeSize();
+        itemImage.sprite = slot.Item.ImageUI;
+        itemImage.SetNativeSize();
 
         AmountText.text = slot.Amount.ToString();
         AmountText.enabled = slot.Amount > 1;
@@ -35,7 +36,7 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _item = slot.Item;
         _inventory = inventory;
 
-        defaultColor = Image.color;
+        defaultColor = backgroundImage.color;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -118,16 +119,15 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
     }
 
-
     public void OnPointerClick(PointerEventData eventData)
     {
         if (selectedSlot != null)
         {
-            selectedSlot.Image.color = selectedSlot.defaultColor;
+            selectedSlot.backgroundImage.color = selectedSlot.defaultColor;
         }
 
         selectedSlot = this;
-        Image.color = selectedColor;
+        backgroundImage.color = selectedColor;
     }
 
     public static void OnConsume()
@@ -140,9 +140,25 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 (selectedSlot._item as ConsumableItem).Use(consumer);
                 selectedSlot._inventory.UseItem(selectedSlot._item);
 
-                selectedSlot.Image.color = selectedSlot.defaultColor;
+                selectedSlot.backgroundImage.color = selectedSlot.defaultColor;
                 selectedSlot = null;
             }
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (selectedSlot != this)
+        {
+            backgroundImage.color = hoverColor;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (selectedSlot != this)
+        {
+            backgroundImage.color = defaultColor;
         }
     }
 }

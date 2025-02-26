@@ -4,40 +4,55 @@ using UnityEngine;
 
 public class Localizer : MonoBehaviour
 {
-    public static Localizer Instance; // Singleton instance of Localizer
+    public static Localizer Instance; // Singleton instance
 
-    public TextAsset DataSheet; // Unity text asset to be assigned (.csv)
+    public TextAsset DataSheet; // CSV file with localization data
 
-    Dictionary<string, LanguageData> Data; // Text data from CSV
+    private Dictionary<string, LanguageData> Data; // Stores text data from CSV
 
     private Language currentLanguage;
     public Language DefaultLanguage;
-    
-    public static Action OnLanguageChange; // Change language event
+
+    public static Action OnLanguageChange; // Event triggered when language changes
+
+    private const string LanguageKey = "SelectedLanguage"; // Key for PlayerPrefs
 
     private void Awake()
     {
         Instance = this;
-        currentLanguage = DefaultLanguage;
-
         LoadLanguageSheet();
+        LoadSavedLanguage();
     }
 
     public static string GetText(string textKey)
     {
-        return Instance.Data[textKey].GetText(Instance.currentLanguage);
+        return Instance.Data.ContainsKey(textKey) ? Instance.Data[textKey].GetText(Instance.currentLanguage) : textKey;
     }
 
     public static void SetLanguage(Language language)
     {
         Instance.currentLanguage = language;
+        PlayerPrefs.SetInt(LanguageKey, (int)language); // Save language selection
+        PlayerPrefs.Save();
 
         OnLanguageChange?.Invoke();
     }
 
+    private void LoadSavedLanguage()
+    {
+        if (PlayerPrefs.HasKey(LanguageKey))
+        {
+            currentLanguage = (Language)PlayerPrefs.GetInt(LanguageKey);
+        }
+        else
+        {
+            currentLanguage = DefaultLanguage; // Fallback to default
+        }
+    }
+
     void LoadLanguageSheet()
     {
-        string[] lines = DataSheet.text.Split(new char[]{ '\n'});
+        string[] lines = DataSheet.text.Split(new char[] { '\n' });
 
         for (int i = 1; i < lines.Length; i++)
         {
