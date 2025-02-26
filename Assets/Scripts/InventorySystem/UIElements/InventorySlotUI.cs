@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
@@ -15,8 +14,8 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Transform _parent;
     private ItemBase _item;
     private InventoryUI _inventory;
-
     private static InventorySlotUI selectedSlot;
+
     private Color defaultColor;
     private Color selectedColor = new Color(1f, 1f, 0.5f, 1f);
 
@@ -117,7 +116,6 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             }
         }
     }
-
 
     public void OnPointerClick(PointerEventData eventData)
     {

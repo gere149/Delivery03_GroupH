@@ -16,6 +16,5 @@ public class LanguageDropdown : MonoBehaviour
     {
         Language selectedLanguage = (Language)selectedIndex + 1;
         Localizer.SetLanguage(selectedLanguage);
-        Debug.Log("Idioma cambiado a: " + selectedLanguage);
     }
 }
